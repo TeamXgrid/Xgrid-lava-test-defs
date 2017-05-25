@@ -1,10 +1,10 @@
 metadata:
-    name: ltp
+    name: build_kernel
     format: "Lava-Test-Shell Test Definition 1.0"
-    description: "Run LTP test suite on Ubuntu"
+    description: "Compile Linux kernel"
     maintainer:
-        - milosz.wasilewski@linaro.org
-        - fathi.boudra@linaro.org
+        - m.ali@xgrid.co
+        - abdulq@xgrid.co
     os:
         - ubuntu
     scope:
@@ -16,19 +16,18 @@ metadata:
         - vexpress-a9
         - vexpress-tc2
         - ifc6410
+        - mustang-grub-efi
 
 install:
     steps:
         - 'VERSION=20170116'
-        - 'rm -rf /opt/ltp'
-        - 'mkdir -p /opt/ltp'
-        - 'cd /opt/ltp'
-        - 'wget https://github.com/linux-test-project/ltp/releases/download/$VERSION/ltp-full-$VERSION.tar.xz'
-        - 'tar --strip-components=1 -Jxf ltp-full-$VERSION.tar.xz'
-        - 'mkdir build'
-        - './configure --prefix=$(readlink -f build)'
-        - 'make all'
-        - 'make SKIP_IDCHECK=1 install'
+        - 'cd /root/cavium/'
+        - 'cp linux-tools/configs/ubuntu-4.12-perf.config /root/cavium/linux/.config'
+        - 'cd /root/cavium/linux/'
+        - 'make -j 72'
+        - 'make modules_install'
+        - 'cp /root/cavium/linux/arch/arm64/boot/Image /boot/efi/vmlinuz-test'
+        - 'echo "LINUX KERNEL COMPILED WOOHHOOO"'
 
 
 params:
@@ -43,11 +42,4 @@ params:
 
 run:
     steps:
-        - './common/scripts/ltpfixup.sh -T $TST_CMDFILES -P /opt/ltp/build -S $SKIPFILE'
-
-parse:
-    pattern: "^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>PASS|FAIL|CONF)\\s+\\d+"
-    fixupdict:
-        FAIL: fail
-        PASS: pass
-        CONF: skip
+        - 'echo "PLEASE REBOOT"'
