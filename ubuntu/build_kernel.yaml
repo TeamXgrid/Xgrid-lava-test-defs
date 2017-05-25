@@ -22,7 +22,7 @@ install:
     steps:
         - 'VERSION=20170116'
         - 'cd /root/cavium/'
-        - 'cp linux-tools/configs/ubuntu-4.12-perf.config /root/cavium/linux/.config'
+        #- 'cp linux-tools/configs/ubuntu-4.12-perf.config /root/cavium/linux/.config'
         - 'cd /root/cavium/linux/'
         - 'make -j 72'
         - 'make modules_install'
