@@ -24,7 +24,7 @@ install:
         - 'cd /root/cavium/'
         #- 'cp linux-tools/configs/ubuntu-4.12-perf.config /root/cavium/linux/.config'
         - 'cd /root/cavium/linux/'
-        - 'make -j 72'
+        - 'make -j 72 -k'
         - 'make modules_install'
         - 'cp /root/cavium/linux/arch/arm64/boot/Image /boot/efi/vmlinuz-test'
         - 'echo "LINUX KERNEL COMPILED WOOHHOOO"'
