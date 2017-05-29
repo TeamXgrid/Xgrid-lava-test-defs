@@ -43,6 +43,7 @@ params:
 
 run:
     steps:
+        - 'uname -a'
         - './common/scripts/ltpfixup.sh -T $TST_CMDFILES -P /opt/ltp/build -S $SKIPFILE'
 
 parse:
