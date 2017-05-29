@@ -1,6 +1,6 @@
 metadata:
     name: build_kernel
-    format: "Lava-Test-Shell Test Definition 1.0"
+    format: "Lava-Test-Shell Test Definition 2.0"
     description: "Compile Linux kernel"
     maintainer:
         - m.ali@xgrid.co
@@ -29,7 +29,7 @@ install:
         - 'cd /root/cavium/linux/'
         - 'git checkout $KERNEL_BRANCH'
         - 'git pull --rebase'
-        - 'cp linux-tools/configs/ubuntu-4.11-generic.config /root/cavium/linux/.config'
+        - 'cp /root/cavium/linux-tools/configs/ubuntu-4.11-perf.config /root/cavium/linux/.config'
         - 'make clean'
         - 'make -j 72 -k'
         #- 'make modules_install'
