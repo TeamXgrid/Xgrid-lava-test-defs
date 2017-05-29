@@ -28,7 +28,7 @@ install:
         - 'cd /root/cavium/linux/'
         - 'make clean'
         - 'make -j 72 -k'
-        - 'make modules_install'
+        #- 'make modules_install'
         - 'cp /root/cavium/linux/arch/arm64/boot/Image /boot/efi/vmlinuz-test'
         - 'echo "LINUX KERNEL COMPILED WOOHHOOO"'
 
