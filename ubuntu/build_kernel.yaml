@@ -20,12 +20,16 @@ metadata:
 
 install:
     steps:
-        - 'BRANCH=origin/t99-4.11-stable/tip'
-        - 'cd /root/cavium/'
-        - 'git checkout $BRANCH'
+        - 'KERNEL_BRANCH="origin/t99-4.11-stable/tip"'
+        - 'CONFIG_BRANCH="master"'
+        - 'cd /root/cavium/linux-tools/configs'
+        - 'git checkout $CONFIG_BRANCH'
+        - 'git pull --rebase'
+        - 'echo "KERNEL CONFIGS UPDATED"'
+        - 'cd /root/cavium/linux/'
+        - 'git checkout $KERNEL_BRANCH'
         - 'git pull --rebase'
         - 'cp linux-tools/configs/ubuntu-4.11-generic.config /root/cavium/linux/.config'
-        - 'cd /root/cavium/linux/'
         - 'make clean'
         - 'make -j 72 -k'
         #- 'make modules_install'
