@@ -20,7 +20,7 @@ metadata:
 
 install:
     steps:
-        - 'KERNEL_BRANCH="origin/t99-4.11-stable/tip"'
+        - 'KERNEL_BRANCH="t99-4.11-stable/tip"'
         - 'CONFIG_BRANCH="master"'
         - 'cd /root/cavium/linux-tools/configs'
         - 'git checkout $CONFIG_BRANCH'
