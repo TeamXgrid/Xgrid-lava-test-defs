@@ -33,8 +33,12 @@ install:
         - 'find . -type  f | xargs -n 5 touch'
         - 'make clean'
         - 'make -j 72 -k'
-        #- 'make modules_install'
+        - 'echo "Done with make"'
+        - 'ls -la /root/cavium/linux/arch/arm64/boot/Image'
+        - 'ls -la /boot/efi/vmlinuz-test'
         - 'cp /root/cavium/linux/arch/arm64/boot/Image /boot/efi/vmlinuz-test'
+        - 'ls -la /root/cavium/linux/arch/arm64/boot/Image'
+        - 'ls -la /boot/efi/vmlinuz-test'
         - 'echo "LINUX KERNEL COMPILED WOOHHOOO"'
 
 
