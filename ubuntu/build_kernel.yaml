@@ -20,10 +20,13 @@ metadata:
 
 install:
     steps:
-        - 'VERSION=20170116'
+        - 'BRANCH=origin/t99-4.11-stable/tip'
         - 'cd /root/cavium/'
-        #- 'cp linux-tools/configs/ubuntu-4.12-perf.config /root/cavium/linux/.config'
+        - 'git checkout $BRANCH'
+        - 'git pull --rebase'
+        - 'cp linux-tools/configs/ubuntu-4.11-generic.config /root/cavium/linux/.config'
         - 'cd /root/cavium/linux/'
+        - 'make clean'
         - 'make -j 72 -k'
         - 'make modules_install'
         - 'cp /root/cavium/linux/arch/arm64/boot/Image /boot/efi/vmlinuz-test'
