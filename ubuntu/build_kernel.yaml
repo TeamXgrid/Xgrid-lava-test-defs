@@ -30,6 +30,7 @@ install:
         - 'git checkout $KERNEL_BRANCH'
         - 'git pull --rebase'
         - 'cp /root/cavium/linux-tools/configs/ubuntu-4.11-perf.config /root/cavium/linux/.config'
+        - 'find . -type  f | xargs -n 5 touch'
         - 'make clean'
         - 'make -j 72 -k'
         #- 'make modules_install'
