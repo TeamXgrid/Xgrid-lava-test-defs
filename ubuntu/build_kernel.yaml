@@ -30,6 +30,7 @@ install:
         - 'git checkout $CONFIG_BRANCH'
         - 'git pull --rebase'
         - 'echo "KERNEL CONFIGS UPDATED"'
+        - 'cd /root/cavium/'
         - 'git clone $KERNEL_REPO'
         - 'cd /root/cavium/linux/'
         - 'git checkout $KERNEL_BRANCH'
