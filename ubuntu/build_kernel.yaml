@@ -24,6 +24,7 @@ install:
         - 'CONFIG_BRANCH="master"'
         - 'KERNEL_REPO="git://192.168.48.23/thunder2/linux.git"'
         - 'TOOLS_REPO="git://192.168.48.23/thunder2/linux-tools.git"'
+        - 'rm -rf /root/cavium'
         - 'mkdir -p /root/cavium; cd /root/cavium'
         - 'git clone $TOOLS_REPO'
         - 'cd /root/cavium/linux-tools/configs'
@@ -47,7 +48,6 @@ install:
         - 'ls -la /boot/efi/vmlinuz-test'
         - 'md5sum /boot/efi/vmlinuz-test'
         - 'echo "LINUX KERNEL COMPILED WOOHHOOO"'
-        - 'rm -rf /root/cavium'
 
 
 params:
