@@ -47,6 +47,8 @@ install:
         - 'cp /root/cavium/linux/arch/arm64/boot/Image /boot/efi/vmlinuz-test'
         - 'ls -la /boot/efi/vmlinuz-test'
         - 'md5sum /boot/efi/vmlinuz-test'
+        - 'cp /boot/efi/vmlinuz-test /root/'
+        - 'ls -la /boot/efi/'
         - 'echo "LINUX KERNEL COMPILED WOOHHOOO"'
 
 
