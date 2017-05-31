@@ -43,7 +43,7 @@ install:
         - 'make -j 72 -k'
         - 'echo "Done with make"'
         - 'md5sum /root/cavium/linux/arch/arm64/boot/Image'
-        - 'cp /root/cavium/linux/arch/arm64/boot/Image /boot/efi/vmlinuz-test'
+        - 'mv /root/cavium/linux/arch/arm64/boot/Image /boot/efi/vmlinuz-test'
         - 'md5sum /boot/efi/vmlinuz-test'
         - 'sleep 60'
         - 'echo "LINUX KERNEL COMPILED WOOHHOOO"'
