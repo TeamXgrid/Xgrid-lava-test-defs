@@ -1,0 +1,64 @@
+metadata:
+    name: build_kernel
+    format: "Lava-Test-Shell Test Definition 2.0"
+    description: "Compile Linux kernel 4.12"
+    maintainer:
+        - m.ali@xgrid.co
+        - abdulq@xgrid.co
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - panda
+        - panda-es
+        - arndale
+        - vexpress-a9
+        - vexpress-tc2
+        - ifc6410
+        - mustang-grub-efi
+
+install:
+    steps:
+        - 'KERNEL_BRANCH="t99-4.12-tracking/tip"'
+        - 'CONFIG_BRANCH="master"'
+        - 'KERNEL_REPO="git://192.168.48.23/thunder2/linux.git"'
+        - 'TOOLS_REPO="git://192.168.48.23/thunder2/linux-tools.git"'
+        - 'rm -rf /root/cavium'
+        - 'mkdir -p /root/cavium; cd /root/cavium'
+        - 'git clone $TOOLS_REPO'
+        - 'cd /root/cavium/linux-tools/configs'
+        - 'git checkout $CONFIG_BRANCH'
+        - 'git pull --rebase'
+        - 'echo "KERNEL CONFIGS UPDATED"'
+        - 'cd /root/cavium/'
+        - 'git clone $KERNEL_REPO'
+        - 'cd /root/cavium/linux/'
+        - 'git checkout $KERNEL_BRANCH'
+        - 'git pull --rebase'
+        - 'cp /root/cavium/linux-tools/configs/ubuntu-4.12-perf.config /root/cavium/linux/.config'
+        #- 'find . -type  f | xargs -n 5 touch'
+        - 'rm -rf /boot/efi/vmlinuz-test'
+        #- 'make clean'
+        - 'make -j 72 -k'
+        - 'echo "Done with make"'
+        - 'md5sum /root/cavium/linux/arch/arm64/boot/Image'
+        - 'cp /root/cavium/linux/arch/arm64/boot/Image /boot/efi/vmlinuz-test'
+        - 'md5sum /boot/efi/vmlinuz-test'
+        - 'sleep 60'
+        - 'echo "LINUX KERNEL COMPILED WOOHHOOO"'
+
+
+params:
+    TST_CMDFILES: syscalls,mm,math,timers,fcntl-locktests,ipc,fsx,fs,hugetlb,io,nptl,pty,containers,fs_bind,filecaps,admin_tools,connectors
+    # SKIPFILE can be a filename from dir ../common/scripts/ltp/ or an open URL
+    # SKIPFILE: "skipfile-lsk-juno"
+    # "skipfile-lsk-juno" is a known file present in dir ../common/scripts/ltp/
+    # or
+    # SKIPFILE: "http://people.linaro.org/~naresh.kamboju/skipfile"
+    # NOTE: busybox wget may not work with https link so pefer to use http
+    SKIPFILE: ""
+
+run:
+    steps:
+        - 'echo "PLEASE REBOOT"'
