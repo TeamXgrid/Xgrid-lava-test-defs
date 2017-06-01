@@ -1,6 +1,6 @@
 metadata:
     name: ltp
-    format: "Lava-Test-Shell Test Definition 1.0"
+    format: "Lava-Test-Shell Test Definition 2.0"
     description: "Run LTP test suite on Ubuntu"
     maintainer:
         - milosz.wasilewski@linaro.org
@@ -32,9 +32,7 @@ install:
 
 
 params:
-    #TST_CMDFILES: syscalls,mm,math,timers,fcntl-locktests,ipc,fsx,fs,hugetlb,io,nptl,pty,containers,fs_bind,filecaps,admin_tools,connectors
-    #TST_CMDFILES: "math timers fcntl-locktests ipc fsx fs io nptl pty containers fs_bind filecaps admin_tools connectors"
-    TST_CMDFILES: "math timers pty io"
+    TST_CMDFILES: "admin_tools can cap_bounds commands connectors containers controllers cpuhotplug dio dma_thread_diotest fcntl-locktests filecaps fs fs_bind fs_ext4 fs_perms_simple fs_readonly fsx hugetlb hyperthreading ima input io io_cd io_floppy ipc kernel_misc ltp-aiodio.part1 ltp-aiodio.part2 ltp-aiodio.part3 ltp-aiodio.part4 ltp-aio-stress.part1 ltp-aio-stress.part2 ltplite lvm.part1 lvm.part2 math modules net.features net.ipv6 net.ipv6_lib net.multicast net.nfs net.rpc net.rpc_tests net.sctp net_stress.appl net_stress.broken_ip net_stress.interface net_stress.ipsec_icmp net_stress.ipsec_tcp net_stress.ipsec_udp net_stress.multicast net_stress.route net.tcp_cmds net.tirpc_tests network_commands nptl numa pipes power_management_tests power_management_tests_exclusive pty quickhit sched scsi_debug.part1 securebits smack stress.part1 stress.part2 stress.part3 syscalls syscalls-ipc timers tpm_tools tracing mm crashme"
     # SKIPFILE can be a filename from dir ../common/scripts/ltp/ or an open URL
     # SKIPFILE: "skipfile-lsk-juno"
     # "skipfile-lsk-juno" is a known file present in dir ../common/scripts/ltp/
