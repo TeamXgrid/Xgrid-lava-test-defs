@@ -32,7 +32,9 @@ install:
 
 
 params:
-    TST_CMDFILES: syscalls,mm,math,timers,fcntl-locktests,ipc,fsx,fs,hugetlb,io,nptl,pty,containers,fs_bind,filecaps,admin_tools,connectors
+    #TST_CMDFILES: syscalls,mm,math,timers,fcntl-locktests,ipc,fsx,fs,hugetlb,io,nptl,pty,containers,fs_bind,filecaps,admin_tools,connectors
+    #TST_CMDFILES: "math timers fcntl-locktests ipc fsx fs io nptl pty containers fs_bind filecaps admin_tools connectors"
+    TST_CMDFILES: "math timers pty io"
     # SKIPFILE can be a filename from dir ../common/scripts/ltp/ or an open URL
     # SKIPFILE: "skipfile-lsk-juno"
     # "skipfile-lsk-juno" is a known file present in dir ../common/scripts/ltp/
@@ -44,9 +46,7 @@ params:
 run:
     steps:
         - 'uname -a'
-        - './common/scripts/ltpfixup.sh -T syscalls -P /opt/ltp/build -S $SKIPFILE'
-        - './common/scripts/ltpfixup.sh -T mm -P /opt/ltp/build -S $SKIPFILE'
-        - './common/scripts/ltpfixup.sh -T io -P /opt/ltp/build -S $SKIPFILE'
+        - 'for module in $TST_CMDFILES; do ./common/scripts/ltpfixup.sh -T $module -P /opt/ltp/build -S $SKIPFILE; echo "done with $module"; done'
 
 parse:
     pattern: "^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>PASS|FAIL|CONF)\\s+\\d+"
