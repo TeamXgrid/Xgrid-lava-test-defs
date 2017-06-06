@@ -1,0 +1,30 @@
+metadata:
+    name: stress-ng
+    format: "Lava-Test-Shell Test Definition 2.0"
+    description: "Run stress-ng test on CentOS"
+    maintainer:
+        - m.ali@xgrid.co
+        - abdulq@xgrid.co
+    os:
+        - centos
+    scope:
+        - functional
+    devices:
+        - mustang-grub-efi
+
+install:
+    steps:
+        - 'TEST_REPO="https://github.com/ColinIanKing/stress-ng.git"'
+        - 'cd /tmp/'
+        - 'git clone $TEST_REPO'
+        - 'cd /tmp/stress-ng'
+        - 'make -j 72 -k'
+        - 'echo "Done with make"'
+        - 'cp stress-ng /usr/bin'
+        - 'echo "Stress-ng compilied"'
+        
+run:
+    steps:
+        - 'echo "running stress-ng"'
+        - 'stress-ng --class os --all  100 &; stress-ng --class io --all  100 &'
+        - 'echo "Stress-ng completed"'
