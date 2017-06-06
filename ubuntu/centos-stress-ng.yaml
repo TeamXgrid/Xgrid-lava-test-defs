@@ -27,5 +27,6 @@ install:
 run:
     steps:
         - 'echo "running stress-ng"'
-        - 'stress-ng --class os --all  100; stress-ng --class io --all  100'
+        - 'stress-ng --class os --all  100'
+        - 'stress-ng --class io --all  100'
         - 'echo "Stress-ng completed"'
