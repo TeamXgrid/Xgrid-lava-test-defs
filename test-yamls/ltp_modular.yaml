@@ -3,19 +3,14 @@ metadata:
     format: "Lava-Test-Shell Test Definition 2.0"
     description: "Run LTP test suite on Ubuntu"
     maintainer:
-        - milosz.wasilewski@linaro.org
-        - fathi.boudra@linaro.org
+        - m.ali@xgrid.co
+        - abdulq@xgrid.co
     os:
-        - fedora
+        - centOS
     scope:
         - functional
     devices:
-        - panda
-        - panda-es
-        - arndale
-        - vexpress-a9
-        - vexpress-tc2
-        - ifc6410
+        - mustang
 
 install:
     steps:
