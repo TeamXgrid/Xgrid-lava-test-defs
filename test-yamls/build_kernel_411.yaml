@@ -45,7 +45,7 @@ install:
         - 'md5sum /root/cavium/linux/arch/arm64/boot/Image'
         - 'dd if=/root/cavium/linux/arch/arm64/boot/Image of=/boot/vmlinuz-lava'
         - 'sleep 60'
-        - 'md5sum /boot/efi/vmlinuz-test'
+        - 'md5sum /boot/vmlinuz-lava'
         - 'echo "LINUX KERNEL COMPILED WOOHHOOO"'
 
 run:
