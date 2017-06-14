@@ -1,0 +1,35 @@
+metadata:
+    name: build_kernel_redhat
+    format: "Lava-Test-Shell Test Definition 2.0"
+    description: "Compile Linux kernel"
+    maintainer:
+        - m.ali@xgrid.co
+        - abdulq@xgrid.co
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - panda
+        - panda-es
+        - arndale
+        - vexpress-a9
+        - vexpress-tc2
+        - ifc6410
+        - mustang-grub-efi
+
+install:
+    steps:
+        - 'rm -rf /boot/vmlinuz-lava'
+        - 'md5sum /root/redhat/vmlinuz'
+        - 'md5sum /root/redhat/initrd.img'
+        - 'dd if=/root/redhat/vmlinuz of=/boot/vmlinuz-lava'
+        - 'dd if=/root/redhat/initrd.img of=/boot/initrd.img-lava'
+        - 'sleep 60'
+        - 'md5sum /boot/vmlinuz-lava'
+        - 'md5sum /boot/initrd.img-lava'
+        - 'echo "LINUX KERNEL REPLACED WOOHHOOO"'
+
+run:
+    steps:
+        - 'echo "PLEASE REBOOT"'
