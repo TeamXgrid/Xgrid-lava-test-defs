@@ -21,11 +21,11 @@ metadata:
 install:
     steps:
         - 'rm -rf /boot/vmlinuz-lava'
-        - 'rm -rf /boot/initrd.img-lava'
+        #- 'rm -rf /boot/initrd.img-lava'
         - 'md5sum /root/redhat/vmlinuz'
         - 'md5sum /root/redhat/initrd.img'
         - 'cp /root/redhat/vmlinuz /boot/vmlinuz-lava'
-        - 'cp /root/redhat/initrd.img /boot/initrd.img-lava'
+        #- 'cp /root/redhat/initrd.img /boot/initrd.img-lava'
         - 'sync'
         - 'sleep 60'
         - 'md5sum /boot/vmlinuz-lava'
