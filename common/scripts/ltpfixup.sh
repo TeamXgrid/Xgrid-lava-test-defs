@@ -45,6 +45,6 @@ if [ $? -ne 0 ]; then
 fi
 lava-test-case LTP_$LOG_FILE --result $RESULT
 cat $SCRIPTPATH/LTP_*.log
-tar czfv $SCRIPTPATH/LTP_$LOG_FILE.tar.gz $SCRIPTPATH/LTP*
-lava-test-case-attach LTP_$LOG_FILE $SCRIPTPATH/LTP_$LOG_FILE.tar.gz
+#tar czfv $SCRIPTPATH/LTP_$LOG_FILE.tar.gz $SCRIPTPATH/LTP*
+#lava-test-case-attach LTP_$LOG_FILE $SCRIPTPATH/LTP_$LOG_FILE.tar.gz
 exit 0
