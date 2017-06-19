@@ -1,0 +1,26 @@
+metadata:
+    name: dut_cleanup
+    format: "Lava-Test-Shell Test Definition 2.0"
+    description: "Cleanup device under test before running any jobs"
+    maintainer:
+        - m.ali@xgrid.co
+        - abdulq@xgrid.co
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - mustang-grub-efi
+
+run:
+    steps:
+        - 'echo "Cleaning overlays"'
+        - 'cd /'
+        - 'rm -rf *overlay-*.tar.gz'
+        - 'echo "Cleaning old LAVA jobs"'
+        - 'dir_to_remove=$(ls -v | grep lava | tail -n 2  | head -n 1)'
+        - 'echo "Removing: $dir_to_remove"'
+        - 'rm -rf $dir_to_remove'
+        - 'df -h'
+        - 'echo "DUT cleanup complete."'
+        
