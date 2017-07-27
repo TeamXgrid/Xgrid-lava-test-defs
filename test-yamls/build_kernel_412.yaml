@@ -22,8 +22,8 @@ install:
     steps:
         - 'KERNEL_BRANCH="t99-4.12-tracking/tip"'
         - 'CONFIG_BRANCH="master"'
-        - 'KERNEL_REPO="git://192.168.48.23/thunder2/linux.git"'
-        - 'TOOLS_REPO="git://192.168.48.23/thunder2/linux-tools.git"'
+        - 'KERNEL_REPO="git://12.108.191.254/thunder2/linux.git"'
+        - 'TOOLS_REPO="git://12.108.191.254/thunder2/linux-tools.git"'
         - 'rm -rf /root/cavium'
         - 'mkdir -p /root/cavium; cd /root/cavium'
         - 'git clone $TOOLS_REPO'
