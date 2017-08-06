@@ -36,6 +36,7 @@ install:
         - 'cd /root/cavium/linux/'
         - 'git checkout $KERNEL_BRANCH'
         - 'git pull --rebase'
+        - 'sed -i "s/CONFIG_IGB=y/CONFIG_IGB=m/" /root/cavium/linux-tools/configs/ubuntu-4.11-perf.config'
         - 'cp /root/cavium/linux-tools/configs/ubuntu-4.11-perf.config /root/cavium/linux/.config'
         - 'rm -rf /boot/vmlinuz-test'
         - 'rm -rf /boot/initrd.img-test'
