@@ -39,6 +39,7 @@ install:
         - 'cp /root/cavium/linux-tools/configs/ubuntu-4.12-perf.config /root/cavium/linux/.config'
         - 'rm -rf /boot/vmlinuz-lava'
         - 'rm -rf /boot/initrd.img-lava'
+        - 'make olddefconfig'
         - 'make -j 72 -k'
         - 'make modules_install -j 72 -k'
         - 'make install -j 72 -k'
